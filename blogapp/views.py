@@ -1,12 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
+
 from .models import Post
 
+def index(request):
+    posts = Post.objects.order_by("published_date")
+    context = {"posts": posts}
+    return render (request, "blogapp/index.html", context)
 
-def home(request):
-    posts = [
-        Post(title="Post 1", content="content of post 1"),
-        Post(title="Post 2", content="content of post 2"),
-        Post(title="Post 3", content="content of post 3")
-    ]
-    
-    return render(request, 'home.html', {'posts' : posts})
+def post(request, post_id): 
+    post = get_object_or_404(Post, pk=post_id)
+    return render(request, "polls/post.html", {"post": post})
