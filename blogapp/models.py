@@ -12,19 +12,13 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     content = models.TextField(max_length=200000)
-    image_urls = models.JSONField(default=dict)
+    feature_content = models.TextField(max_length=2000)
+    image_urls = models.JSONField(default=dict, null = True)
+    feature_image_url = models.CharField(max_length=5000, null = True)
     published_date = models.DateTimeField(auto_now_add=True)
     likes = models.IntegerField(default=0)
     comment_count = models.IntegerField(default=0)
 
-    def __str__(self):
-        return self.title
-
-
-class FeaturePost(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    content = models.TextField(max_length=2000)
-    image_url = models.CharField(max_length=2000)
     def __str__(self):
         return self.title
     
