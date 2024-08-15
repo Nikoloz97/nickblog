@@ -1,7 +1,14 @@
 from django.contrib import admin
 
-from .models import Post
+from .models import Post, Content
 
-# Register your models here.
+class ContentInline(admin.TabularInline):
+    model = Content
+    extra = 1
 
-admin.site.register(Post)
+class PostAdmin(admin.ModelAdmin):
+    inlines = [
+        ContentInline
+    ]
+
+admin.site.register(Post, PostAdmin)

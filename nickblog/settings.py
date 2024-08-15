@@ -129,3 +129,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Azure stuff
 ALLOWED_HOSTS = ['nikolozblog.azurewebsites.net', 'localhost', '127.0.0.1']
 
+#Media
+MEDIA_ROOT = os.path.join(BASE_DIR, 'nickblog')
+MEDIA_URL = '/media/'
+

@@ -1,1 +1,6 @@
-{{ post }}
+{% for content in post.contents.all %} {% if content.content_type == 'text' %}
+<p>{{ content.text }}</p>
+{% elif content.content_type == 'image' %}
+<img src="{{ content.image.url }}" height="200" alt="Blog Image" />
+{% endif %} {% endfor %}
+<a href="{% url 'home'%}" class="btn btn-primary">Return to Home</a>

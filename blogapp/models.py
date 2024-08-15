@@ -11,10 +11,8 @@ class User (models.Model):
 class Post(models.Model): 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    content = models.TextField(max_length=200000)
     feature_content = models.TextField(max_length=2000)
-    image_urls = models.JSONField(default=dict, null = True)
-    feature_image_url = models.CharField(max_length=5000, null = True)
+    feature_image = models.ImageField(upload_to='assets/images', blank=True, null=True)
     published_date = models.DateTimeField(auto_now_add=True)
     likes = models.IntegerField(default=0)
     comment_count = models.IntegerField(default=0)
@@ -22,6 +20,16 @@ class Post(models.Model):
     def __str__(self):
         return self.title
     
+class Content (models.Model):
+    TYPE_CHOICES = (('text', 'Text'), ('image', 'Image')) 
+
+    post = models.ForeignKey(Post, related_name='contents', on_delete=models.CASCADE)
+    content_type = models.CharField(max_length=5, choices=TYPE_CHOICES)
+    text = models.TextField(blank=True, null=True)
+    image = models.ImageField(upload_to='assets/images', blank=True, null=True)
+    def __str__(self):
+        return self.content_type
+
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
