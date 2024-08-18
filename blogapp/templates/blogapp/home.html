@@ -6,14 +6,16 @@
 <p>{{post.feature_content}}</p>
 
 {% if post.feature_image %}
-<img src="{{ post.feature_image.url }}" alt="Blog Image" height="200" />
+<div style="margin-bottom: 10px">
+  <img src="{{ post.feature_image.url }}" alt="Blog Image" height="200" />
+</div>
 {% endif %}
 
-<p>Likes: {{post.likes}}</p>
-<p>View {{post.comment_count}} comments</p>
-<a href="{% url 'post_content' post_id=post.id %}" class="btn btn-primary"
-  >See Post</a
->
+<div>
+  <a href="{% url 'post_content' post_id=post.id %}" class="btn btn-primary"
+    >See Post</a
+  >
+</div>
 
 {% endfor %} {% else %}
 <p>No posts yet!</p>
