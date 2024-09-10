@@ -9,8 +9,12 @@ class User (models.Model):
         return self.username
     
 class Post(models.Model): 
+    # First = DB; second = UI
+    TYPE_CATEGORIES = (('coding','Coding'), ('health', 'Health'), ('travel', 'Travel'))
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
+    category = models.CharField(max_length=10, choices=TYPE_CATEGORIES, null=True)
     feature_content = models.TextField(max_length=2000)
     feature_image = models.ImageField(upload_to='assets/images', blank=True, null=True)
     published_date = models.DateTimeField(auto_now_add=True)
