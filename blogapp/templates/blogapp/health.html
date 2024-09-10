@@ -1,0 +1,23 @@
+<h1>Health</h1>
+
+{% if posts %} {% for post in posts %}
+
+<h2>{{post.title}}</h2>
+<p>{{post.published_date}}</p>
+<p>{{post.feature_content}}</p>
+
+{% if post.feature_image %}
+<div style="margin-bottom: 10px">
+  <img src="{{ post.feature_image.url }}" alt="Blog Image" height="200" />
+</div>
+{% endif %}
+
+<div>
+  <a href="{% url 'post_content' post_id=post.id %}" class="btn btn-primary"
+    >See Post</a
+  >
+</div>
+
+{% endfor %} {% else %}
+<p>No posts yet!</p>
+{% endif %}
