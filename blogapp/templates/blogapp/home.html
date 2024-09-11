@@ -1,6 +1,7 @@
-<h1>Nick's Blog</h1>
+{% extends 'base.html' %} {% block title %}
+<h1>{{category}}</h1>
+{% endblock %} {% block content %} {% if posts %} {% for post in posts %}
 
-{% if posts %} {% for post in posts %}
 <h2>{{post.title}}</h2>
 <p>{{post.published_date}}</p>
 <p>{{post.feature_content}}</p>
@@ -19,4 +20,4 @@
 
 {% endfor %} {% else %}
 <p>No posts yet!</p>
-{% endif %}
+{% endif %} {% endblock %}

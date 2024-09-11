@@ -9,7 +9,7 @@ class User (models.Model):
         return self.username
     
 class Post(models.Model): 
-    # First = DB; second = UI
+    # First = DB; second = UI (on admin)
     TYPE_CATEGORIES = (('coding','Coding'), ('health', 'Health'), ('travel', 'Travel'))
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)

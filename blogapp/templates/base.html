@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Nick's Blog{% endblock %}</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>
+            <a href="{% url 'categoryPosts' category='travel' %}">Travel</a>
+          </li>
+          <li>
+            <a href="{% url 'categoryPosts' category='coding' %}">Coding</a>
+          </li>
+          <li>
+            <a href="{% url 'categoryPosts' category='health' %}">Health</a>
+          </li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>{% block content %} {% endblock %}</main>
+
+    <footer>
+      <p>Copyright © 2024</p>
+    </footer>
+  </body>
+</html>
