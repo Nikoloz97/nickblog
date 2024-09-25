@@ -66,4 +66,4 @@ jobs:
         with:
           app-name: 'nikolozblog'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_31EA6441598F4E39B7B2047561B5A307 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9E68D7B8A5D1430FBF008D43FAAD3C51 }}
