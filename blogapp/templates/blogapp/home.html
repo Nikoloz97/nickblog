@@ -2,20 +2,37 @@
 <h1>{{category}}</h1>
 {% endblock %} {% block content %} {% if posts %} {% for post in posts %}
 
-<h2>{{post.title}}</h2>
-<p>{{post.published_date}}</p>
-<p>{{post.feature_content}}</p>
+<div class="card" style="margin: 1em; width: 50%">
+  <div class="card-body">
+    <div class="row">
+      <!-- Left column: Title, date, content -->
+      <div class="col-md-6">
+        <h4 class="card-title">{{post.title}}</h4>
+        <h6 class="card-subtitle mb-2 text-muted">
+          Posted: {{post.published_date}}
+        </h6>
+        <p class="card-text">{{post.feature_content}}</p>
+        <a
+          href="{% url 'post_content' post_id=post.id %}"
+          class="btn btn-primary"
+          >See Post</a
+        >
+      </div>
 
-{% if post.feature_image %}
-<div style="margin-bottom: 10px">
-  <img src="{{ post.feature_image.url }}" alt="Blog Image" height="200" />
-</div>
-{% endif %}
-
-<div>
-  <a href="{% url 'post_content' post_id=post.id %}" class="btn btn-primary"
-    >See Post</a
-  >
+      <!-- Right column: Image -->
+      <div class="col-md-6 text-center">
+        {% if post.feature_image %}
+        <div style="margin: 1em">
+          <img
+            src="{{ post.feature_image.url }}"
+            alt="Blog Image"
+            class="rounded img-fluid"
+          />
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endfor %} {% else %}
