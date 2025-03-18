@@ -15,7 +15,7 @@ else:
 
 ALLOWED_HOSTS = []
 
-ALLOWED_HOSTS = ['*'] if ENVIRONMENT == 'development' else ['nikolozblog.azurewebsites.net']
+ALLOWED_HOSTS = ['*'] if ENVIRONMENT == 'development' else ['nikoloz-blog.azurewebsites.net']
 
 # Application definition
 
