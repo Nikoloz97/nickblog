@@ -3,23 +3,38 @@
   rel="stylesheet"
 />
 {% extends 'base.html' %} {% block title %}
-<h1>{{ category }}</h1>
+<h1>{{category}}</h1>
 {% endblock %} {% block content %} {% if posts %} {% for post in posts %}
-<h2>{{ post.title }}</h2>
-<p>{{ post.published_date }}</p>
-<p>{{ post.feature_content }}</p>
 
-{% if post.feature_image %}
-<div style="margin-bottom: 10px">
-  <img src="{{ post.feature_image.url }}" alt="Blog Image" height="200" />
-</div>
-{% endif %}
+<div class="card" style="margin: 1em; width: 50%">
+  <div class="row" style="display: flex; align-items: center">
+    <!-- Left column: Title, date, content -->
+    <div class="col-md-6" style="padding: 2em">
+      <h2 class="card-title">{{post.title}}</h2>
+      <h6 class="card-subtitle mb-2 text-muted">
+        Posted: {{post.published_date}}
+      </h6>
+      <p class="card-text">{{post.feature_content}}</p>
+      <a href="{% url 'post_content' post_id=post.id %}" class="btn btn-primary"
+        >Read Post</a
+      >
+    </div>
 
-<div>
-  <a href="{% url 'post_content' post_id=post.id %}" class="btn btn-primary"
-    >See Post</a
-  >
+    <!-- Right column: Image -->
+    <div class="col-md-6 text-center">
+      {% if post.feature_image %}
+      <div>
+        <img
+          src="{{ post.feature_image.url }}"
+          alt="Blog Image"
+          class="rounded img-fluid"
+        />
+      </div>
+      {% endif %}
+    </div>
+  </div>
 </div>
+
 {% endfor %} {% else %}
 <p>No posts yet!</p>
 {% endif %} {% endblock %}
