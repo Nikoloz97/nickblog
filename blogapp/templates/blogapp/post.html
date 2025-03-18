@@ -1,12 +1,27 @@
-<link
-  href="https://bootswatch.com/5/darkly/bootstrap.min.css"
-  rel="stylesheet"
-/>
-<h2>{{post.title}}</h2>
-<p>{{post.published_date}}</p>
-{% for content in post.contents.all %} {% if content.content_type == 'text' %}
-<p>{{ content.text }}</p>
-{% elif content.content_type == 'image' %}
-<img src="{{ content.image.url }}" height="200" alt="Blog Image" />
-{% endif %} {% endfor %}
-<div><a href="{% url 'home'%}" class="btn btn-primary">Return to Home</a></div>
+{% extends 'base.html' %} {% block content %}
+<div
+  style="
+    margin: 2em 15em;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+  "
+>
+  <h2 class="text-center">{{post.title}}</h2>
+  <p class="text-center">Posted Date: {{post.published_date}}</p>
+  {% for content in post.contents.all %} {% if content.content_type == 'text' %}
+  <div>
+    <div>
+      <p>{{ content.text }}</p>
+    </div>
+    {% elif content.content_type == 'image' %}
+    <div>
+      <img src="{{ content.image.url }}" height="200" alt="Blog Image" />
+    </div>
+  </div>
+  {% endif %} {% endfor %}
+  <div class="text-center" style="margin: 1em">
+    <a href="{% url 'home'%}" class="btn btn-primary">Return to Home</a>
+  </div>
+</div>
+{% endblock %}
