@@ -13,10 +13,6 @@ else:
     SECRET_KEY = 'django-insecure-)7iv8!ca2vec2t72ujfz1s1^nis!e^i4c+z6iuy(@9!-er1etc'
     DEBUG = True
 
-ALLOWED_HOSTS = []
-
-# ALLOWED_HOSTS = ['*'] if ENVIRONMENT == 'development' else ['nikoloz-blog.azurewebsites.net'] TODO: fix this later
-
 # Application definition
 
 INSTALLED_APPS = [
