@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <link
@@ -8,12 +9,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nick's Blog</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}" />
   </head>
   <body>
     <header>
       <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">Nick's Blog</a>
+          <a class="navbar-brand" href="/"
+            ><img
+              class="rounded"
+              style="height: 4em"
+              src="{% static 'blogapp/assets/nick-blog-logo-zoomed.png' %}"
+          /></a>
           <button
             class="navbar-toggler"
             type="button"
