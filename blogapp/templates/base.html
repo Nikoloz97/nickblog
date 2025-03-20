@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <link
@@ -9,7 +8,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nick's Blog</title>
-    {% comment %} TODO: fix this path {% endcomment %}
     <link rel="icon" type="image/x-icon" href="/media/assets/favicon.ico" />
   </head>
   <body>
@@ -20,7 +18,7 @@
             ><img
               class="rounded"
               style="height: 4em"
-              src="{% static 'blogapp/assets/nick-blog-logo-zoomed.png' %}"
+              src="/media/assets/logo.png"
           /></a>
           <button
             class="navbar-toggler"
