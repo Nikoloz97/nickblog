@@ -1,8 +1,11 @@
 from pathlib import Path
+from dotenv import load_dotenv
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+load_dotenv()
 
 ENVIRONMENT = os.getenv('DJANGO_ENV', 'development') 
 
@@ -13,6 +16,18 @@ else:
     SECRET_KEY = 'django-insecure-)7iv8!ca2vec2t72ujfz1s1^nis!e^i4c+z6iuy(@9!-er1etc'
     DEBUG = True
 
+AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME')
+AZURE_ACCOUNT_KEY = os.getenv('AZURE_ACCOUNT_KEY')
+AZURE_CONTAINER_NAME = os.getenv('AZURE_CONTAINER_NAME')
+
+
+# Custom Azure Storage class
+class AzureStorage:
+    account_name = AZURE_ACCOUNT_NAME
+    account_key = AZURE_ACCOUNT_KEY
+    azure_container = AZURE_CONTAINER_NAME
+    expiration_secs = None  
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -22,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blogapp'
+    'blogapp',
+    'storages'
 ]
 
 MIDDLEWARE = [

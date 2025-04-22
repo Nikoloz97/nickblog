@@ -16,11 +16,11 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     category = models.CharField(max_length=10, choices=TYPE_CATEGORIES, null=True)
     feature_content = models.TextField(max_length=2000)
-    feature_image = models.ImageField(upload_to='assets/images', blank=True, null=True)
+    feature_image_url = models.URLField(blank=True, null=True)
     published_date = models.DateTimeField(auto_now_add=True)
     likes = models.IntegerField(default=0)
     comment_count = models.IntegerField(default=0)
-
+    
     def __str__(self):
         return self.title
     
@@ -30,7 +30,8 @@ class Content (models.Model):
     post = models.ForeignKey(Post, related_name='contents', on_delete=models.CASCADE)
     content_type = models.CharField(max_length=5, choices=TYPE_CHOICES)
     text = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to='assets/images', blank=True, null=True)
+    image_url = models.URLField(blank=True, null=True)
+    
     def __str__(self):
         return self.content_type
 
