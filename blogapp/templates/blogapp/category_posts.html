@@ -22,10 +22,10 @@
 
     <!-- Right column: Image -->
     <div class="col-md-6 text-center">
-      {% if post.feature_image %}
+      {% if post.feature_image_url %}
       <div>
         <img
-          src="{{ post.feature_image.url }}"
+          src="{{ post.feature_image_url }}"
           alt="Blog Image"
           class="rounded img-fluid"
         />
