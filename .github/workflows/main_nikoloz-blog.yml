@@ -24,18 +24,11 @@ jobs:
         with:
           python-version: "3.10"
 
-      - name: Create and start virtual environment
+      - name: Set up virtualenv, install deps, collectstatic
         run: |
           python -m venv venv
           source venv/bin/activate
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      # collecting static directory files in blogapp
-      - name: Collect static files
-        run: |
-          source venv/bin/activate
+          pip install -r requirements.txt
           python manage.py collectstatic --noinput
 
       - name: Zip artifact for deployment
