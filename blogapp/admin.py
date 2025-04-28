@@ -1,15 +1,23 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Content, Image
 from .forms import PostAdminForm
 from .forms import ContentInlineForm
 from .utils.azure_upload import upload_to_azure
 
 from .models import Post, Content
 
+@admin.register(Image)
+class ImageAdmin(admin.ModelAdmin):
+    search_fields = ['url', 'caption']  # Necessary for autocomplete to work
+    list_display = ['file', 'url', 'caption']  # Show fields in admin list view
+    fields = ['file', 'url', 'caption']  # Enable file upload and caption editing
+    readonly_fields = ['url']  # Prevent manual editing of the URL
+
 class ContentInline(admin.TabularInline):
     model = Content
     form = ContentInlineForm
     extra = 1
+    autocomplete_fields = ['image']  # Enable image dropdown using ForeignKey
 
 class PostAdmin(admin.ModelAdmin):
     inlines = [

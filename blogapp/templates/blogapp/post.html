@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+<!-- -->
+{% block content %}
 <div
   style="
     margin: 2em 15em;
@@ -9,17 +11,47 @@
 >
   <h2 class="text-center">{{post.title}}</h2>
   <p class="text-center">Posted Date: {{post.published_date}}</p>
-  {% for content in post.contents.all %} {% if content.content_type == 'text' %}
-  <div>
-    <div>
-      <p>{{ content.text }}</p>
+
+  <div style="display: flex; flex-wrap: wrap; justify-content: center">
+    {% for content in post.contents.all %}
+    <!-- -->
+    {% if content.content_type == 'text'%}
+    <div style="width: 100%">
+      <div>
+        <p>{{ content.text }}</p>
+      </div>
     </div>
+    {% elif content.content_type == 'header' %}
+    <h2 style="width: 100%">{{ content.header }}</h2>
     {% elif content.content_type == 'image' %}
-    <div>
-      <img src="{{ content.image_url }}" height="200" alt="Blog Image" />
+    <div style="margin: 10px; max-width: 300px; text-align: center">
+      <img
+        src="{{ content.image.url }}"
+        style="
+          width: 100%;
+          object-fit: cover;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        "
+        alt="Blog Image"
+      />
+      <p
+        style="
+          margin-top: 8px;
+          font-size: 14px;
+          color: #666;
+          overflow-wrap: break-word;
+          width: 100%;
+        "
+      >
+        {{content.image.caption}}
+      </p>
     </div>
+    {% endif %}
+    <!-- -->
+    {% endfor %}
   </div>
-  {% endif %} {% endfor %}
+
   <div class="text-center" style="margin: 1em">
     <a href="{% url 'home'%}" class="btn btn-primary">Return to Home</a>
   </div>
