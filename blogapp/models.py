@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.timezone import now
 from .utils.azure_upload import upload_to_azure
 
 class User (models.Model):
@@ -16,9 +17,9 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     category = models.CharField(max_length=10, choices=TYPE_CATEGORIES, null=True)
-    feature_content = models.TextField(max_length=2000)
+    feature_content = models.TextField(max_length=2000) 
     feature_image_url = models.URLField(blank=True, null=True)
-    published_date = models.DateTimeField(auto_now_add=True)
+    published_date = models.DateField(default=now, null=True, blank=True)
     likes = models.IntegerField(default=0)
     comment_count = models.IntegerField(default=0)
     
