@@ -5,7 +5,7 @@
   {% for post in posts %}
   <div class="row justify-content-center">
     <div class="col-12 col-lg-10">
-      <div class="card mb-5">
+      <div class="card mb-5 rounded">
         <div class="row g-0">
           <!-- Left column: Title, date, content -->
           <div class="col-md-6 p-4 d-flex flex-column justify-content-center">
@@ -16,7 +16,7 @@
             <p class="card-text">{{ post.feature_content }}</p>
             <a
               href="{% url 'post_content' post_id=post.id %}"
-              class="btn btn-primary"
+              class="btn btn-primary rounded"
             >
               Read Post
             </a>
