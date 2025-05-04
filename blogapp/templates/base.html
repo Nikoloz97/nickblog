@@ -39,7 +39,10 @@
           <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">Home</a>
+                <a class="nav-link active" href="{% url 'home' %}"
+                  >Home
+                  <span class="visually-hidden">(current)</span>
+                </a>
               </li>
               <li class="nav-item">
                 <a
@@ -65,45 +68,18 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'contact' %}">Contact</a>
               </li>
-
-              {% comment %} TODO: implement this?? {% endcomment %} {% comment%}
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  href="#"
-                  role="button"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  >Dropdown</a
-                >
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Separated link</a>
-                </div>
-              </li>
-              {% endcomment %}
             </ul>
-            {% comment %} TODO: implement this??
-            <form class="d-flex">
-              <input
-                class="form-control me-sm-2"
-                type="search"
-                placeholder="Search"
-              />
-              <button class="btn btn-secondary my-2 my-sm-0" type="submit">
-                Search
-              </button>
-            </form>
-            {% endcomment %}
           </div>
         </div>
       </nav>
     </header>
 
     <main>{% block content %} {% endblock %}</main>
+    <!-- Bootstrap Bundle with Popper (Required for navbar toggling) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-lZN37f..."
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
