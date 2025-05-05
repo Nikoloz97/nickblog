@@ -1,59 +1,43 @@
 {% extends 'base.html' %}
 <!-- -->
 {% block content %}
-<div
-  style="
-    margin: 2em 15em;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-  "
->
-  <h2 class="text-center">{{post.title}}</h2>
-  <p class="text-center">{{post.published_date}}</p>
+<div class="container py-4">
+  <div class="row">
+    <div class="col-lg-10 col-xl-8 mx-auto">
+      <h2 class="text-center mb-3">{{post.title}}</h2>
+      <p class="text-center text-muted mb-4">{{post.published_date}}</p>
 
-  <div style="display: flex; flex-wrap: wrap; justify-content: center">
-    {% for content in post.contents.all %}
-    <!-- -->
-    {% if content.content_type == 'text'%}
-    <div style="width: 100%">
-      <div>
-        <p>{{ content.text }}</p>
+      <div class="row">
+        {% for content in post.contents.all %}
+        <!-- -->
+        {% if content.content_type == 'text'%}
+        <div class="col-12 mb-4">
+          <p>{{ content.text }}</p>
+        </div>
+        {% elif content.content_type == 'header' %}
+        <div class="col-12 mb-3">
+          <h2>{{ content.header }}</h2>
+        </div>
+        {% elif content.content_type == 'image' %}
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
+          <div class="text-center">
+            <img
+              src="{{ content.image.url }}"
+              class="img-fluid rounded shadow-sm"
+              alt="Blog Image"
+            />
+            <p class="mt-2 text-muted small">{{content.image.caption}}</p>
+          </div>
+        </div>
+        {% endif %}
+        <!-- -->
+        {% endfor %}
+      </div>
+
+      <div class="text-center mt-4 mb-3">
+        <a href="{% url 'home'%}" class="btn btn-primary">Return to Home</a>
       </div>
     </div>
-    {% elif content.content_type == 'header' %}
-    <h2 style="width: 100%">{{ content.header }}</h2>
-    {% elif content.content_type == 'image' %}
-    <div style="margin: 10px; max-width: 300px; text-align: center">
-      <img
-        src="{{ content.image.url }}"
-        style="
-          width: 100%;
-          object-fit: cover;
-          border-radius: 8px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        "
-        alt="Blog Image"
-      />
-      <p
-        style="
-          margin-top: 8px;
-          font-size: 14px;
-          color: #666;
-          overflow-wrap: break-word;
-          width: 100%;
-        "
-      >
-        {{content.image.caption}}
-      </p>
-    </div>
-    {% endif %}
-    <!-- -->
-    {% endfor %}
-  </div>
-
-  <div class="text-center" style="margin: 1em">
-    <a href="{% url 'home'%}" class="btn btn-primary">Return to Home</a>
   </div>
 </div>
 {% endblock %}
