@@ -1,4 +1,18 @@
 {% extends 'base.html' %}
+<!---->
+{% block meta_tags %}
+<meta property="og:title" content="{{ post.title }}" />
+{% comment %} <meta property="og:description" content="{{
+post.get_summary|default:"Read this post on my blog." }}" /> {% endcomment %}
+<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+<meta property="og:type" content="article" />
+<!---->
+{% if post.feature_image_url %}
+<meta property="og:image" content="{{ post.feature_image_url }}" />
+<!---->
+{% endif %}
+<!---->
+{% endblock %}
 <!-- -->
 {% block content %}
 <div class="container py-4">
