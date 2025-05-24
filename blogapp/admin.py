@@ -21,6 +21,9 @@ class ContentInline(SortableInlineAdminMixin, admin.TabularInline):
     autocomplete_fields = ['image']  # Enable image dropdown using ForeignKey
     ordering = ['order']
 
+    class Media:
+        js = ('admin/js/content_inline.js',)
+
 class PostAdmin(SortableAdminBase, admin.ModelAdmin):
     inlines = [
         ContentInline
