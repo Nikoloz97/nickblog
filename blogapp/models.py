@@ -41,13 +41,14 @@ class Image(models.Model):
         return self.url or "No URL"
 
 class Content(models.Model):
-    TYPE_CHOICES = (('header', 'Header'), ('text', 'Text'), ('image', 'Image')) 
-
+    TYPE_CHOICES = (('header', 'Header'), ('subheader', 'Subheader'), ('text', 'Text'), ('link', 'Link'), ('image', 'Image')) 
     post = models.ForeignKey(Post, related_name='contents', on_delete=models.CASCADE)
     content_type = models.CharField(max_length=10, choices=TYPE_CHOICES)
     header = models.TextField(blank=True, null=True)
     subheader = models.TextField(blank=True, null=True)
     text = models.TextField(blank=True, null=True)
+    link_url = models.TextField(blank=True, null=True)
+    link_text = models.TextField(blank=True, null=True)
     image = models.ForeignKey(Image, blank=True, null=True, on_delete=models.SET_NULL)  
     order = models.PositiveIntegerField(default=0)
 
