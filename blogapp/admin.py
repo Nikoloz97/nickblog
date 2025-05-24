@@ -3,6 +3,7 @@ from .models import Post, Content, Image
 from .forms import PostAdminForm
 from .forms import ContentInlineForm
 from .utils.azure_upload import upload_to_azure
+from adminsortable2.admin import SortableAdminBase, SortableInlineAdminMixin
 
 from .models import Post, Content
 
@@ -13,13 +14,14 @@ class ImageAdmin(admin.ModelAdmin):
     fields = ['file', 'url', 'caption']  # Enable file upload and caption editing
     readonly_fields = ['url']  # Prevent manual editing of the URL
 
-class ContentInline(admin.TabularInline):
-    model = Content
+class ContentInline(SortableInlineAdminMixin, admin.TabularInline):
+    model = Content 
     form = ContentInlineForm
     extra = 1
     autocomplete_fields = ['image']  # Enable image dropdown using ForeignKey
+    ordering = ['order']
 
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(SortableAdminBase, admin.ModelAdmin):
     inlines = [
         ContentInline
     ]

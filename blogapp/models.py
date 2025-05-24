@@ -48,6 +48,10 @@ class Content(models.Model):
     header = models.TextField(blank=True, null=True)
     text = models.TextField(blank=True, null=True)
     image = models.ForeignKey(Image, blank=True, null=True, on_delete=models.SET_NULL)  
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order'] # orders by order field by default
     
     def __str__(self):
         return self.content_type
