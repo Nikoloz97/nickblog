@@ -46,6 +46,7 @@ class Content(models.Model):
     post = models.ForeignKey(Post, related_name='contents', on_delete=models.CASCADE)
     content_type = models.CharField(max_length=10, choices=TYPE_CHOICES)
     header = models.TextField(blank=True, null=True)
+    subheader = models.TextField(blank=True, null=True)
     text = models.TextField(blank=True, null=True)
     image = models.ForeignKey(Image, blank=True, null=True, on_delete=models.SET_NULL)  
     order = models.PositiveIntegerField(default=0)

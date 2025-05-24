@@ -32,6 +32,10 @@ post.get_summary|default:"Read this post on my blog." }}" /> {% endcomment %}
         <div class="col-12 mb-3">
           <h2>{{ content.header }}</h2>
         </div>
+        {% elif content.content_type == 'subheader' %}
+        <div class="col-12 mb-3">
+          <h4>{{ content.subheader }}</h4>
+        </div>
         {% elif content.content_type == 'image' %}
         <div class="col-12 col-sm-6 col-md-4 mb-4">
           <div class="text-center">
