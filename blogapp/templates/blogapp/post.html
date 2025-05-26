@@ -26,7 +26,7 @@ post.get_summary|default:"Read this post on my blog." }}" /> {% endcomment %}
         <!-- -->
 
         {% if content.content_type == 'header' %}
-        <div class="col-12 mb-3">
+        <div class="col-12 mb-3 mt-5">
           <h2>{{ content.header }}</h2>
         </div>
         {% elif content.content_type == 'subheader' %}
@@ -38,7 +38,7 @@ post.get_summary|default:"Read this post on my blog." }}" /> {% endcomment %}
           <p>{{ content.text }}</p>
         </div>
         {% elif content.content_type == 'link' %}
-        <div class="col-12 mb-3">
+        <div class="col-12 mb-4">
           <a target="_blank" href="{{content.link_url}}"
             >{{ content.link_text }}</a
           >
